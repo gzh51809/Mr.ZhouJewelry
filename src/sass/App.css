@@ -3,6 +3,8 @@
     
 }
 .am-tab-bar{
-    flex: 1;
-    
+    height: 2.133333rem;
+}
+.am-navbar{
+    padding-top: .8rem;
 }

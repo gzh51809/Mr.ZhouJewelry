@@ -9,6 +9,7 @@ import Mall from './components/Mall';
 import Custom from './components/Custom';
 import Found from './components/Found';
 import Mine from './components/Mine';
+// import Search from './components/Mall/Search';
 
 class App extends Component {
   constructor(){
@@ -64,8 +65,10 @@ class App extends Component {
           <Route path="/found" component={Found}/>
           <Route path="/custom" component={Custom}/>
           <Route path="/cart" component={Cart}/>
-          <Route path="/found" component={Found}/>
+          <Route path="/mine" component={Mine}/>
+          {/* <Route path="/search" component={Search}/> */}
           <Redirect from="/" to="/mall"/>
+          
         </Switch>
 
 
@@ -81,26 +84,22 @@ class App extends Component {
                 <TabBar.Item
                   title={menu.name}
                   key={menu.name}
-                  icon={<div style={{
-                    width: '22px',
-                    height: '22px',
-                    background: 'url(https://zos.alipayobjects.com/rmsportal/sifuoDUQdAFKAVcFGROC.svg) center center /  21px 21px no-repeat' }}
-                  />
+                  icon={
+                    <svg className="icon" aria-hidden="true">
+                      <use xlinkHref={menu.icon}></use>
+                    </svg>
                   }
-                  selectedIcon={<div style={{
-                    width: '22px',
-                    height: '22px',
-                    background: 'url(https://zos.alipayobjects.com/rmsportal/iSrlOTqrKddqbOmlvUfq.svg) center center /  21px 21px no-repeat' }}
-                  />
+                  selectedIcon={
+                    <svg className="icon" aria-hidden="true">
+                      <use xlinkHref={menu.icon}></use>
+                    </svg>
                   }
                   selected={this.state.selectedTab === menu.name}
                   onPress={()=>{
                     this.setState({
                       selectedTab:menu.name,
                     });
-                    this.props.history.push(menu.name)
-                    console.log(this.state.selectedTab)
-                    
+                    this.props.history.push(menu.name)                   
                   }  
                   }
                   >
