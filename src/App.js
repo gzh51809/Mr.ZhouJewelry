@@ -9,6 +9,9 @@ import Mall from './components/Mall';
 import Custom from './components/Custom';
 import Found from './components/Found';
 import Mine from './components/Mine';
+import Search from './components/search'
+import axios from 'axios';
+import { connect } from 'react-redux';
 // import Search from './components/Mall/Search';
 
 class App extends Component {
@@ -46,17 +49,24 @@ class App extends Component {
       selectedTab:'Mall'
       
     }
-    this.handleChange = this.handleChange.bind(this);
+    this.storedata = this.storedata.bind(this)
   }
 
-  handleChange(){
-    //两个问题：1、如何获取路由路径，2、如何获取history对象
-    // this.setState({
-    //     current:key
-    // });
-    console.log(666);
+  storedata(data){
+    this.props.dispatch({
+      type:'ADD_NAVLIST',
+      payload:data
+    })
   }
 
+  componentDidUpdate(){
+      axios.get('http://www.chowtaiseng.com/ishop/web/?app_act=api/&method=item.list.category&params={%22platform_type%22:6,%22platform_category_code%22:%22A001%22,%22isindex%22:true}&sid=2jm0sfbmvb3fcrdfg9hfkik1u5&sign=caccd2ca9b40124928bad146478c4a3b')
+      .then(res=>{
+        this.props.storedata(res);
+      })
+
+
+  }
   render() {
     return (
       <div className="App" >
@@ -66,7 +76,7 @@ class App extends Component {
           <Route path="/custom" component={Custom}/>
           <Route path="/cart" component={Cart}/>
           <Route path="/mine" component={Mine}/>
-          {/* <Route path="/search" component={Search}/> */}
+          <Route path="/search" component={Search}/>
           <Redirect from="/" to="/mall"/>
           
         </Switch>
@@ -116,7 +126,15 @@ class App extends Component {
   }
 }
 
+
+let mapStateToProps = (state)=>{
+    console.log(state)
+    return {
+      ...state
+    }
+}
 // 利用withRouter高阶组件包装App组件
 App = withRouter(App);
+App = connect(mapStateToProps)(App)
 
 export default App;
