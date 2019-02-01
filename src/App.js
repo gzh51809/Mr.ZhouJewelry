@@ -13,6 +13,7 @@ import Search from './components/search'
 import axios from 'axios';
 import { connect } from 'react-redux';
 // import Search from './components/Mall/Search';
+import {add} from './actions/mallAction';
 
 class App extends Component {
   constructor(){
@@ -57,17 +58,24 @@ class App extends Component {
       type:'ADD_NAVLIST',
       payload:data
     })
+
+    // setTimeout(()=>{
+    //   console.log('nav:',this.props);
+    // },1000)
   }
 
-  componentDidUpdate(){
+  componentWillMount(){
       axios.get('http://www.chowtaiseng.com/ishop/web/?app_act=api/&method=item.list.category&params={%22platform_type%22:6,%22platform_category_code%22:%22A001%22,%22isindex%22:true}&sid=2jm0sfbmvb3fcrdfg9hfkik1u5&sign=caccd2ca9b40124928bad146478c4a3b')
       .then(res=>{
         this.props.storedata(res);
       })
 
-
+      // setTimeout({
+      //   console.log(state)
+      // },1000)
   }
   render() {
+    
     return (
       <div className="App" >
         <Switch>
@@ -128,13 +136,20 @@ class App extends Component {
 
 
 let mapStateToProps = (state)=>{
-    console.log(state)
+    
     return {
       ...state
     }
 }
+let mapDispatchToProps = (dispatch,ownProps)=>{
+  return {
+    storedata(data){
+          dispatch(add(data))
+      }
+  }
+}
 // 利用withRouter高阶组件包装App组件
 App = withRouter(App);
-App = connect(mapStateToProps)(App)
+App = connect(mapStateToProps,mapDispatchToProps)(App)
 
 export default App;

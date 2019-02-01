@@ -1,6 +1,6 @@
 //商城Reducer---指定修改规则
 
-import{ADD_NAVLIST} from '../action/mallAction'
+import{ADD_NAVLIST} from '../actions/mallAction'
 
 //设置state的默认值
 let defaultState = {
