@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { NavBar, Button} from 'antd-mobile';
-import '../sass/Mall.css'
-import '../sass/aa.scss'
+import '../sass/Mall.css';
+import BottomBar from '../components/BottomBar'
+
 import axios from 'axios';
 import { Tabs, WhiteSpace } from 'antd-mobile';
 import {connect} from 'react-redux';
@@ -45,8 +46,9 @@ class Mall extends Component{
     }
 
     render(){
+        console.log(this)
         return (
-            <div>
+            <div className="mall page">
                 {/* {头部} */}
                 <NavBar
                 mode="light"
@@ -54,31 +56,42 @@ class Mall extends Component{
                 onLeftClick={ this.handleChange}
                 rightContent="客服"
                 >
-                    <Button disabled style={{width:'7rem',height:'.8rem',marginTop:'.133333rem'}} icon="search" className="searchBtn">珍珠吊坠</Button><WhiteSpace />
+                    <Button disabled style={{width:'270px',height:'35px',marginTop:'5px',background:'#ccc',borderRadius:' 20px'}} icon="search" className="searchBtn">珍珠吊坠</Button><WhiteSpace />
                     
                 </NavBar>
 
+                <div className="main">
+                    <Carousel autoplay infinite>
+                        {
+                            this.state.bannerImg.map(item=>{
+                                return <a key={item.article_id} style={{ display: 'inline-block', width: '100%', height:'200px' }}>
+                                    <img src={item.article_img} style={{ width: '100%', }}/>
+                                </a>
+                            })
+                        }
+                    </Carousel>
 
-                <Carousel autoplay infinite>
+                    <Tabs tabs={this.state.tabs}
+                    >
+                        {
+                            this.state.navlist.map(item=>{
+                                return <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '250px'}}>
+                                    {
+                                        item.son.map(item=>{
+                                            return <img src={item.img}/>
+                                        })
+                                    }
+                                </div>
+                            })
+                            
+                        }
+                    </Tabs>
+                </div>
                 
-                    {
-                        this.state.bannerImg.map(item=>{
-                            return <a key={item.article_id} style={{ display: 'inline-block', width: '100%', height:'200px' }}>
-                                <img src={item.article_img} style={{ width: '100%', }}/>
-                            </a>
-                        })
-                    }
-                </Carousel>
-
-
-                <Tabs tabs={this.state.navlist.platform_category_name}
-                >
-                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '250px'}}>
-                        Content of first tab
-                    </div>
-                </Tabs>
-
                 
+                <footer>
+                    <BottomBar/>
+                </footer>
             </div>
         )
     }

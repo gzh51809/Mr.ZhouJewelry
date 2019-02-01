@@ -1,19 +1,16 @@
 import React, { Component } from 'react';
-// import ReactDOM from 'react-dom';
-import { TabBar } from 'antd-mobile';
 import 'antd-mobile/dist/antd-mobile.css';
-import './sass/App.css';
 import {Route,Switch,withRouter,Redirect} from 'react-router-dom';
-import Cart from './components/Cart';
-import Mall from './components/Mall';
-import Custom from './components/Custom';
-import Found from './components/Found';
-import Mine from './components/Mine';
-import Search from './components/search'
+import Cart from './page/Cart';
+import Mall from './page/Mall';
+import Custom from './page/Custom';
+import Found from './page/Found';
+import Mine from './page/Mine';
+import Search from './page/search'
 import axios from 'axios';
 import { connect } from 'react-redux';
-// import Search from './components/Mall/Search';
 import {add} from './actions/mallAction';
+import './sass/App.scss'
 
 class App extends Component {
   constructor(){
@@ -58,10 +55,6 @@ class App extends Component {
       type:'ADD_NAVLIST',
       payload:data
     })
-
-    // setTimeout(()=>{
-    //   console.log('nav:',this.props);
-    // },1000)
   }
 
   componentWillMount(){
@@ -69,11 +62,8 @@ class App extends Component {
       .then(res=>{
         this.props.storedata(res);
       })
-
-      // setTimeout({
-      //   console.log(state)
-      // },1000)
   }
+
   render() {
     
     return (
@@ -86,47 +76,7 @@ class App extends Component {
           <Route path="/mine" component={Mine}/>
           <Route path="/search" component={Search}/>
           <Redirect from="/" to="/mall"/>
-          
         </Switch>
-
-
-        <TabBar
-        unselectedTintColor="#949494"
-        tintColor="#ddc17f"
-        barTintColor="white"
-        noRenderContent="true"
-        >
-          {
-            this.state.menu.map(menu=>{
-              return (
-                <TabBar.Item
-                  title={menu.name}
-                  key={menu.name}
-                  icon={
-                    <svg className="icon" aria-hidden="true">
-                      <use xlinkHref={menu.icon}></use>
-                    </svg>
-                  }
-                  selectedIcon={
-                    <svg className="icon" aria-hidden="true">
-                      <use xlinkHref={menu.icon}></use>
-                    </svg>
-                  }
-                  selected={this.state.selectedTab === menu.name}
-                  onPress={()=>{
-                    this.setState({
-                      selectedTab:menu.name,
-                    });
-                    this.props.history.push(menu.name)                   
-                  }  
-                  }
-                  >
-                  
-                </TabBar.Item>
-              )
-            })
-          }
-        </TabBar>
 
         
       </div>
@@ -136,11 +86,11 @@ class App extends Component {
 
 
 let mapStateToProps = (state)=>{
-    
     return {
       ...state
     }
 }
+
 let mapDispatchToProps = (dispatch,ownProps)=>{
   return {
     storedata(data){
