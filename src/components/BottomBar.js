@@ -58,7 +58,7 @@ class BottomBar extends Component{
                 this.state.menu.map(menu=>{
                 return (
                     <TabBar.Item
-                    title={menu.name}
+                    title={menu.text}
                     key={menu.name}
                     icon={
                         <svg className="icon" aria-hidden="true">

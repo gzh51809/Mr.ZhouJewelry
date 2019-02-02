@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-import BottomBar from '../components/BottomBar';
+import BottomBar from '@/components/BottomBar';
 
 
 class Cart extends Component{

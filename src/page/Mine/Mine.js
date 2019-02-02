@@ -1,13 +1,13 @@
 import React,{Component} from 'react';
-import BottomBar from '../components/BottomBar';
+import BottomBar from '@/components/BottomBar';
 
 
-class Custom extends Component{
+class Mine extends Component{
     render(){
         return (
-            <div className="page custom">
+            <div className="page mine">
                 <div className="main">
-                    <h1>Custom</h1>
+                    <h1>Mine</h1>
                 </div>
                 <footer>
                     <BottomBar/>
@@ -18,4 +18,4 @@ class Custom extends Component{
     }
 }
 
-export default Custom;
+export default Mine;

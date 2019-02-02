@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import 'antd-mobile/dist/antd-mobile.css';
 import {Route,Switch,withRouter,Redirect} from 'react-router-dom';
-import Cart from './page/Cart';
-import Mall from './page/Mall';
-import Custom from './page/Custom';
-import Found from './page/Found';
-import Mine from './page/Mine';
-import Search from './page/search'
+import Cart from './page/Cart/Cart';
+import Mall from './page/Mall/Mall';
+import Custom from './page/Custom/Custom';
+import Found from './page/Found/Found';
+import Mine from './page/Mine/Mine';
+import Search from './page/Mall/search'
 import axios from 'axios';
 import { connect } from 'react-redux';
 import {add} from './actions/mallAction';
@@ -15,38 +15,6 @@ import './sass/App.scss'
 class App extends Component {
   constructor(){
     super();
-    this.state = {
-      menu:[
-        {
-          text:'商城',
-          path:'/mall',
-          name:'Mall',
-          icon:'#icon-jiezhi'
-        },{
-          text:'发现',
-          path:'/found',
-          name:'Found',
-          icon:'#icon-faxian'
-        },{
-          text:'定制',
-          path:'/custom',
-          name:'Custom',
-          icon:'#icon-zuanshi'
-        },{
-          text:'购物车',
-          path:'/cart',
-          name:'Cart',
-          icon:'#icon-icon01'
-        },{
-          text:'个人',
-          path:'/mine',
-          name:'Mine',
-          icon:'#icon-geren'
-        },
-      ],     
-      selectedTab:'Mall'
-      
-    }
     this.storedata = this.storedata.bind(this)
   }
 

@@ -1,13 +1,13 @@
 import React,{Component} from 'react';
-import BottomBar from '../components/BottomBar';
+import BottomBar from '@/components/BottomBar';
 
 
-class Found extends Component{
+class Custom extends Component{
     render(){
         return (
-            <div className="page found">
+            <div className="page custom">
                 <div className="main">
-                    <h1>Found</h1>
+                    <h1>Custom</h1>
                 </div>
                 <footer>
                     <BottomBar/>
@@ -18,4 +18,4 @@ class Found extends Component{
     }
 }
 
-export default Found;
+export default Custom;

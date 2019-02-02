@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { NavBar, Button} from 'antd-mobile';
-import '../sass/Mall.css';
-import BottomBar from '../components/BottomBar'
+import '@/sass/Mall.css';
+import BottomBar from '@/components/BottomBar'
 
 import axios from 'axios';
 import { Tabs, WhiteSpace } from 'antd-mobile';
@@ -20,7 +20,8 @@ class Mall extends Component{
                 { title: '钻石' },
             ],
             bannerImg:[],
-            navlist:[]
+            navlist:[],
+            special:[],
         }
         //绑定handlechange事件
         this.handleChange = this.handleChange.bind(this)
@@ -35,6 +36,8 @@ class Mall extends Component{
         axios.get('http://www.chowtaiseng.com/ishop/web/?app_act=api/&method=item.get.banner&sid=2jm0sfbmvb3fcrdfg9hfkik1u5&sign=22fb6e0459a66f6ca8454f28a0dea011')
         .then(res=>{
             this.setState({bannerImg:res.data.data})
+        }).catch((err)=>{
+            console.log(err);
         })
 
         //导航栏
@@ -42,6 +45,17 @@ class Mall extends Component{
         .then(res=>{console.log(res)
             this.setState({navlist:res.data.data.data.son})
             
+        }).catch((err)=>{
+            console.log(err);
+        })
+
+        //专题产品
+        axios.get('http://www.chowtaiseng.com/ishop/web/?app_act=api/&method=item.goods.special.list&sid=2jm0sfbmvb3fcrdfg9hfkik1u5&sign=22fb6e0459a66f6ca8454f28a0dea011')
+        .then(res=>{console.log(res)
+            this.setState({special:res})
+            
+        }).catch((err)=>{
+            console.log(err);
         })
     }
 
@@ -64,7 +78,7 @@ class Mall extends Component{
                     <Carousel autoplay infinite>
                         {
                             this.state.bannerImg.map(item=>{
-                                return <a key={item.article_id} style={{ display: 'inline-block', width: '100%', height:'200px' }}>
+                                return <a key={item.article_id} style={{ display: 'inline-block', width: '100%', height:'200px' }} href="javascript:;">
                                     <img src={item.article_img} style={{ width: '100%', }}/>
                                 </a>
                             })
@@ -75,10 +89,10 @@ class Mall extends Component{
                     >
                         {
                             this.state.navlist.map(item=>{
-                                return <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '250px'}}>
+                                return <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height:'200px',flexFlow:'row wrap',justifyContent: 'space-between'}}>
                                     {
                                         item.son.map(item=>{
-                                            return <img src={item.img}/>
+                                            return <a href="javascript:;" className="item.platform_category_code"><img src={item.img}/></a>
                                         })
                                     }
                                 </div>
