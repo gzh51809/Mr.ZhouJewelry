@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { NavBar, Button} from 'antd-mobile';
 import '@/sass/Mall.css';
 import BottomBar from '@/components/BottomBar'
+import MallSpecial from './MallSpecial'
 
 import axios from 'axios';
 import { Tabs, WhiteSpace } from 'antd-mobile';
@@ -52,7 +53,7 @@ class Mall extends Component{
         //专题产品
         axios.get('http://www.chowtaiseng.com/ishop/web/?app_act=api/&method=item.goods.special.list&sid=2jm0sfbmvb3fcrdfg9hfkik1u5&sign=22fb6e0459a66f6ca8454f28a0dea011')
         .then(res=>{console.log(res)
-            this.setState({special:res})
+            this.setState({special:res.data})
             
         }).catch((err)=>{
             console.log(err);
@@ -85,11 +86,10 @@ class Mall extends Component{
                         }
                     </Carousel>
 
-                    <Tabs tabs={this.state.tabs}
-                    >
+                    <Tabs tabs={this.state.tabs} tabBarActiveTextColor='#ddc17f' tabBarUnderlineStyle={{ color:'#ddc17f'}}>
                         {
                             this.state.navlist.map(item=>{
-                                return <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height:'200px',flexFlow:'row wrap',justifyContent: 'space-between'}}>
+                                return <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height:'200px',flexFlow:'row wrap',justifyContent: 'space-between',}}>
                                     {
                                         item.son.map(item=>{
                                             return <a href="javascript:;" className="item.platform_category_code"><img src={item.img}/></a>
@@ -100,6 +100,8 @@ class Mall extends Component{
                             
                         }
                     </Tabs>
+
+                    <MallSpecial special={this.state.special}/>
                 </div>
                 
                 

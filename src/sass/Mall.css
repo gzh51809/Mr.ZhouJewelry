@@ -1,4 +1,10 @@
-
+.am-tabs-top{
+    height: 253px;
+    color:#646464;
+    font-weight:600;
+    background: #ECECEC;
+    padding-bottom:10px;
+}
 .am-tabs-pane-wrap img{
     width: 100%;
     height: 100%;
@@ -14,4 +20,15 @@
 
 .am-tabs-pane-wrap>div>a:nth-child(4){
     flex:0 0 49%;
+}
+
+.special-h3{
+    height: 50px;
+    font-size: 15px;
+    line-height: 50px;
+    font-weight: 600;
+    background: #FFFFFF;
+    color: #323232;
+    font-family: "PingFangBold";
+    text-align: center;
 }
