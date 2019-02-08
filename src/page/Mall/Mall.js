@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { NavBar, Button} from 'antd-mobile';
 import '@/sass/Mall.css';
-import BottomBar from '@/components/BottomBar'
-import MallSpecial from './MallSpecial'
+import BottomBar from '@/components/BottomBar';
+import MallSpecial from './MallSpecial';
+import MallRecommend from './MallRecommend';
 
 import axios from 'axios';
 import { Tabs, WhiteSpace } from 'antd-mobile';
@@ -23,6 +24,7 @@ class Mall extends Component{
             bannerImg:[],
             navlist:[],
             special:[],
+            recommend:[],
         }
         //绑定handlechange事件
         this.handleChange = this.handleChange.bind(this)
@@ -52,8 +54,18 @@ class Mall extends Component{
 
         //专题产品
         axios.get('http://www.chowtaiseng.com/ishop/web/?app_act=api/&method=item.goods.special.list&sid=2jm0sfbmvb3fcrdfg9hfkik1u5&sign=22fb6e0459a66f6ca8454f28a0dea011')
-        .then(res=>{console.log(res)
+        .then(res=>{
             this.setState({special:res.data})
+            
+        }).catch((err)=>{
+            console.log(err);
+        })
+
+        //人气推荐
+        axios.get('http://www.chowtaiseng.com/ishop/web/?app_act=api/&method=item.get.goods.pop&params={%22platform_type%22:5}&sid=2jm0sfbmvb3fcrdfg9hfkik1u5&sign=5b0b9d9d3c43d413437f3aa2f24c4797')
+        .then(res=>{
+            this.setState({recommend:res.data.data})
+            console.log(this.state.recommend)
             
         }).catch((err)=>{
             console.log(err);
@@ -61,7 +73,6 @@ class Mall extends Component{
     }
 
     render(){
-        console.log(this)
         return (
             <div className="mall page">
                 {/* {头部} */}
@@ -102,8 +113,9 @@ class Mall extends Component{
                     </Tabs>
 
                     <MallSpecial special={this.state.special}/>
+                    
+                    <MallRecommend special={this.state.recommend}/>
                 </div>
-                
                 
                 <footer>
                     <BottomBar/>
