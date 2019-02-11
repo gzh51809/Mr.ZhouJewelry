@@ -4,7 +4,6 @@ import '@/sass/Mall.css';
 
 class MallSpecial extends Component {
     render(){
-        console.log(this.props)
         return (
             <div className="mall-special" >
                 <h3 className="special-h3">专题产品</h3>

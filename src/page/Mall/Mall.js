@@ -4,6 +4,7 @@ import '@/sass/Mall.css';
 import BottomBar from '@/components/BottomBar';
 import MallSpecial from './MallSpecial';
 import MallRecommend from './MallRecommend';
+import MallLikes from './MallLikes';
 
 import axios from 'axios';
 import { Tabs, WhiteSpace } from 'antd-mobile';
@@ -25,6 +26,7 @@ class Mall extends Component{
             navlist:[],
             special:[],
             recommend:[],
+            likes:[],
         }
         //绑定handlechange事件
         this.handleChange = this.handleChange.bind(this)
@@ -56,7 +58,6 @@ class Mall extends Component{
         axios.get('http://www.chowtaiseng.com/ishop/web/?app_act=api/&method=item.goods.special.list&sid=2jm0sfbmvb3fcrdfg9hfkik1u5&sign=22fb6e0459a66f6ca8454f28a0dea011')
         .then(res=>{
             this.setState({special:res.data})
-            
         }).catch((err)=>{
             console.log(err);
         })
@@ -65,8 +66,14 @@ class Mall extends Component{
         axios.get('http://www.chowtaiseng.com/ishop/web/?app_act=api/&method=item.get.goods.pop&params={%22platform_type%22:5}&sid=2jm0sfbmvb3fcrdfg9hfkik1u5&sign=5b0b9d9d3c43d413437f3aa2f24c4797')
         .then(res=>{
             this.setState({recommend:res.data.data})
-            console.log(this.state.recommend)
-            
+        }).catch((err)=>{
+            console.log(err);
+        })
+
+        //猜你喜欢
+        axios.get('http://www.chowtaiseng.com/ishop/web/?app_act=api/&method=member.guess.you.like&params={%22platform_type%22:5}&sid=2jm0sfbmvb3fcrdfg9hfkik1u5&sign=5b0b9d9d3c43d413437f3aa2f24c4797')
+        .then(res=>{
+            this.setState({likes:res.data.data})
         }).catch((err)=>{
             console.log(err);
         })
@@ -87,17 +94,17 @@ class Mall extends Component{
                 </NavBar>
 
                 <div className="main">
-                    <Carousel autoplay infinite>
+                    <Carousel autoplay infinite style={{height:'262.5px'}}>
                         {
                             this.state.bannerImg.map(item=>{
-                                return <a key={item.article_id} style={{ display: 'inline-block', width: '100%', height:'200px' }} href="javascript:;">
+                                return <a key={item.article_id} style={{ display: 'inline-block', width: '100%', height:'262.5px' }} href="javascript:;">
                                     <img src={item.article_img} style={{ width: '100%', }}/>
                                 </a>
                             })
                         }
                     </Carousel>
 
-                    <Tabs tabs={this.state.tabs} tabBarActiveTextColor='#ddc17f' tabBarUnderlineStyle={{ color:'#ddc17f'}}>
+                    <Tabs tabs={this.state.tabs} tabBarActiveTextColor='#ddc17f' tabBarUnderlineStyle={{ backgorundcolor:'#ddc17f'}}>
                         {
                             this.state.navlist.map(item=>{
                                 return <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height:'200px',flexFlow:'row wrap',justifyContent: 'space-between',}}>
@@ -114,7 +121,9 @@ class Mall extends Component{
 
                     <MallSpecial special={this.state.special}/>
                     
-                    <MallRecommend special={this.state.recommend}/>
+                    <MallRecommend recommend={this.state.recommend}/>
+
+                    <MallLikes likes={this.state.likes}/>
                 </div>
                 
                 <footer>

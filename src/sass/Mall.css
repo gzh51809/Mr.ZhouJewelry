@@ -21,8 +21,10 @@
 .am-tabs-pane-wrap>div>a:nth-child(4){
     flex:0 0 49%;
 }
-
-.special-h3{
+.mall-special{
+    padding-bottom: 17px;
+}
+.special-h3,.recommend-h3,.likes-h3{
     height: 50px;
     font-size: 15px;
     line-height: 50px;
@@ -32,3 +34,94 @@
     font-family: "PingFangBold";
     text-align: center;
 }
+.am-list-item img{
+    width: 100px;
+    height: 100px;
+}
+.am-list-item del{
+    font-size: 0.48rem;
+    color: #bcbcbc;
+    margin-left: 0.2rem;
+}
+.am-list-item span{
+    color: #a18667;
+    font-size: 0.672rem;
+    font-family: "PingFangBold";
+}
+.recommend-header{
+    position: relative;
+}
+.recommend-header a{
+    display: block;
+    position: absolute;
+    top: 20px;
+    right: 5px;
+    color: #c6c6c6;
+    font-size: 0.624rem;
+}
+.am-list-item{
+    /* border-top: 1px solid #c9c9c9; */
+    padding: 5px 0;
+}
+.am-list-item .am-list-line .am-list-brief{
+    margin: 0;
+}
+.am-list-item .am-list-line{
+    border: 0;
+}
+.am-list-item .am-list-line .am-list-content{
+    color: #323232;
+    font-weight: 600;
+    font-size: 16px;
+}
+
+/* likes */
+.mall-likes{
+    background: #ececec;
+}
+.likes-h3{
+    background: #ececec;
+}
+.mall-likes ul{
+    padding: 0 3%;
+}
+.mall-likes ul li{
+    width: 49%;
+    height: 250px;
+    float: left;
+    background: #fff;
+    margin-bottom: 15px;
+    margin-right: 2%;
+    box-shadow:2px 2px 5px #ccc;
+}
+.mall-likes ul li:nth-child(2n){
+    margin-right: 0px;
+}
+.mall-likes ul li img{
+    width: 100%;
+    height: 198px;
+}
+.mall-likes ul li .likes-goods{
+    padding-left: 20px;
+}
+.mall-likes ul li h4{
+    width: 90%;
+    font-size: 14px;
+    font-weight: 600;
+    font-family: 'PingFangBold';
+    color: #323232;
+    line-height: 32px;
+    overflow:hidden; 
+    text-overflow:ellipsis;
+    white-space:nowrap;
+}
+.mall-likes ul li span{
+    color: #a18667;
+    font-size: 0.672rem;
+    font-family: "PingFangBold";
+}
+.mall-likes ul li del{
+    font-size: 0.48rem;
+    color: #bcbcbc;
+}
+
