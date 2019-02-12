@@ -1,0 +1,111 @@
+.page{
+    .mine-header{
+        height: 300px;
+        background: rgba(110, 98, 98, 0.5);
+        .seting{
+            height: 60px;
+            margin-bottom: 50px;
+            .icon{
+                display: block;
+                float: right;
+                margin-top: 30px;
+                margin-right: 20px; 
+                font-size: 22px;
+            }
+        }
+        .userbox{
+            height: 150px;
+            .userimg{
+                width: 100px;
+                height: 100px;
+                margin-bottom: 10px;
+                margin-left: 38%;
+                img{
+                    border-radius: 50%;
+                }
+                
+            }
+            p{
+                text-align: center;
+                font-size: 0.816rem;
+                color: #FFFFFF;
+            }
+        }
+    }
+    .main{
+        .mine-nav{
+            display: flex;
+            height: 3.504rem;
+            padding: 0 15px 0 20px;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            color: #d6d3d3;
+            font-size: 12px;
+            div{
+                text-align: center;
+               .icon{
+                    margin-block-end: 5px;
+                    text-align: center;
+                    color: #d6d3d3;
+                } 
+            }
+            
+        }
+        .mine-link{
+            overflow: hidden;
+            position: relative;
+            background: #ececec;
+            padding: 0.72rem 0.96rem 0.48rem;
+            .link-box{
+                float: left;
+                width: 8.776rem;
+                height: 5.328rem;
+                text-align: center;
+                background: #FFFFFF;
+                margin-bottom: 0.432rem;
+                text-align: center;
+                .icon{
+                    margin-top:1.248rem;
+                    color: #f1c55e !important;
+                    font-size: 38px;
+                }
+                p{
+                    font-size: .373333rem;
+                    color: #000000;
+                    font-weight: 500;
+                }
+                span{
+                    font-size:.32rem;
+                    -webkit-transform:scale(0.8);
+                    color: #b8b6b6;
+                }
+            }
+            .link-box:nth-child(2n){
+                float: right;
+            }
+            .link-round{
+                position: absolute;
+                top: 4rem;
+                left: 7.2rem;
+                width: 4.944rem;
+                height: 4.944rem;
+                background: #FFFFFF;
+                border-radius: 3rem;
+                border: 0.192rem solid #ececec;
+                text-align: center;
+                .icon{
+                    margin-top: 1rem;
+                }
+                p,span{
+                    color: #d6d3d3;
+                }
+                span{
+                    font-size: .32rem;
+                }
+                
+            }
+            
+        }
+    }
+}

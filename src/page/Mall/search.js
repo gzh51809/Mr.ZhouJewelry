@@ -1,9 +1,11 @@
 import React,{Component} from 'react'
-class search extends Component{
+
+class Search extends Component{
     render(){
+        console.log(this)
         return (
             <div>搜索</div>
         )
     }
 }
-export default search;
+export default Search;

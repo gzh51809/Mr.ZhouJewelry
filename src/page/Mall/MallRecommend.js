@@ -17,7 +17,7 @@ class MallRecommend extends Component{
                         <List className="my-list">
                             {
                                 this.props.recommend.map(item=>{
-                                    return <Item thumb={item.pic}>
+                                    return <Item thumb={item.pic} key={item.goods_id}>
                                         {item.goods_name} 
                                         <Brief>{item.goods_aliases_name}</Brief>
                                         <span>￥{item.sku_price}</span><del>{item.sell_price>0 ? '￥'+item.sell_price : ''}</del>

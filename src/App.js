@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import 'antd-mobile/dist/antd-mobile.css';
-import {Route,Switch,withRouter,Redirect} from 'react-router-dom';
+import {Route,Switch,Redirect,withRouter} from 'react-router-dom';
 import Cart from './page/Cart/Cart';
 import Mall from './page/Mall/Mall';
 import Custom from './page/Custom/Custom';
 import Found from './page/Found/Found';
 import Mine from './page/Mine/Mine';
-import Search from './page/Mall/search'
+import Search from './page/Mall/Search'
 import axios from 'axios';
 import { connect } from 'react-redux';
 import {add} from './actions/mallAction';
@@ -33,7 +33,7 @@ class App extends Component {
   }
 
   render() {
-    
+    console.log('app')
     return (
       <div className="App" >
         <Switch>
@@ -66,8 +66,8 @@ let mapDispatchToProps = (dispatch,ownProps)=>{
       }
   }
 }
-// 利用withRouter高阶组件包装App组件
-App = withRouter(App);
-App = connect(mapStateToProps,mapDispatchToProps)(App)
 
-export default App;
+// 利用withRouter高阶组件包装App组件
+App = connect(mapStateToProps,mapDispatchToProps)(App)
+//withRouter一定要放到最后面
+export default withRouter(App); 

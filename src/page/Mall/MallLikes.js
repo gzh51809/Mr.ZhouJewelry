@@ -10,7 +10,7 @@ class MallLikes extends Component{
                 <ul className="clearfix">
                     {
                         this.props.likes.map(item=>{
-                            return <li className={item.goods_id}>
+                            return <li className={item.goods_id} key={item.goods_id}>
                                 <img src={item.pic}/>
                                 <div className="likes-goods">
                                     <h4>{item.goods_name}</h4>

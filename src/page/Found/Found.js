@@ -5,10 +5,10 @@ import foundiconf from './imgs/found.png'
 
 
 class Found extends Component{
-    render(){
+    render(){console.log('found')
         return (
             <div className="page found">
-                <header>
+                <header className="found-header">
                     <h4>发现</h4>
                     <a href="javascript:;"><img src={foundiconf}/></a>   
                 </header>
