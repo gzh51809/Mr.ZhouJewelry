@@ -100,7 +100,7 @@ class Mall extends Component{
                 >
                     <Link 
                     
-                    style={{width:'260px',height:'27px',marginTop:'5px',background:'#e3e3e3',borderRadius:' 20px',color:'#646464',fontSize:' 0.72rem',paddingLeft:' 10px',paddingTop: '3px',display:'block'}} 
+                    style={{width:'13.933333rem',height:'1.52rem',marginTop:'5px',background:'#e3e3e3',borderRadius:' 20px',color:'#646464',fontSize:' 0.72rem',paddingLeft:' 10px',paddingTop: '3px',display:'block'}} 
                     icon="search" 
                     className="searchBtn"
                     to="/search"
@@ -124,14 +124,20 @@ class Mall extends Component{
 
                     <Tabs tabs={this.state.tabs} tabBarActiveTextColor='#ddc17f' tabBarUnderlineStyle={{ backgorundcolor:'#ddc17f'}}>
                         {
-                            this.state.navlist.map(item=>{console.log(item.platform_category_id)
+                            this.state.navlist.map(item=>{
                                 if(item.platform_category_id === undefined){
                                     item.platform_category_id = 111
                                 }
                                 return <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height:'200px',flexFlow:'row wrap',justifyContent: 'space-between',}} key={item.platform_category_id}>
                                     {
                                         item.son.map(item=>{
-                                            return <a href="javascript:;" className="item.platform_category_code" key={item.platform_category_code}><img src={item.img}/></a>
+                                            return <Link to={{
+                                                pathname: '/goodslist/'+ item.platform_category_code,
+                                                search:item.platform_category_code
+                                                }} 
+                                                key={item.platform_category_code}>
+                                                    <img src={item.img}/>
+                                                </Link>
                                         })
                                     }
                                 </div>

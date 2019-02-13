@@ -6,7 +6,9 @@ import Mall from './page/Mall/Mall';
 import Custom from './page/Custom/Custom';
 import Found from './page/Found/Found';
 import Mine from './page/Mine/Mine';
-import Search from './page/Mall/Search'
+import Search from './page/Mall/Search';
+import GoodsList from './page/GoodList/GoodsList';
+
 import axios from 'axios';
 import { connect } from 'react-redux';
 import {add} from './actions/mallAction';
@@ -43,6 +45,7 @@ class App extends Component {
           <Route path="/cart" component={Cart}/>
           <Route path="/mine" component={Mine}/>
           <Route path="/search" component={Search}/>
+          <Route path="/goodslist/:goodsId" component={GoodsList}/>
           <Redirect from="/" to="/mall"/>
         </Switch>
 

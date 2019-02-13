@@ -1,0 +1,30 @@
+
+    .GoodsList{
+        width: 100%;
+        header{
+            .headerCenter{
+                height: 1.524rem;
+                display: flex;
+                flex-direction: row;
+                padding-top: 1.5rem;
+                .headerL{
+                    margin-left: .533333rem;
+                }
+                .headerC{
+                    margin: 0 auto;
+                    span{
+                    font-size: 0.816rem;
+                    color: #323232;
+                    font-family: "PingFangBold"!important;
+                    font-weight: 100!important;
+                    letter-spacing: 0.048rem;
+                    }
+                }
+                .headerR{
+                    margin-right: .533333rem;
+                }
+                
+            }
+        }
+        
+    }
